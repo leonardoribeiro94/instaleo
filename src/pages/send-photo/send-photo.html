@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title text-center class="oleo-script">Instaleo</ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="auto-scroll">
+  <ion-card>
+    <ion-slides>
+      <ion-slide text-center>
+        <img src="https://loremflickr.com/320/240" alt="image" alt="" class="inkwell" style="width: 100%">
+        <small>inkwell</small>
+      </ion-slide>
+
+      <ion-slide text-center>
+        <img src="https://loremflickr.com/320/240" alt="image" alt="" class="willow" style="width: 100%">
+        <small>willow</small>
+      </ion-slide>
+
+      <ion-slide text-center>
+        <img src="https://loremflickr.com/320/240" alt="image" alt="" class="nashville" style="width: 100%">
+        <small>nashville</small>
+      </ion-slide>
+    </ion-slides>
+
+    <ion-card-content>
+      <ion-list no-lines>
+        <ion-item>
+          <ion-input type="text" placeholder="Título" maxlength="40"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-textarea placeholder="Mensagem" rows="3" maxlength="255"></ion-textarea>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+
+    <ion-row no-padding>
+      <ion-col>
+        <button ion-button clear small color="danger" icon-start (click)="getLocation()">
+          <ion-icon name='pin'></ion-icon> Ativar Localização</button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+  <div padding>
+    <button ion-button block large outline (click)="submit()">Enviar</button>
+  </div>
+</ion-content>
