@@ -11,6 +11,7 @@ import { SignupPage } from "../pages/signup/signup";
 import { PhotosPage } from "../pages/photos/photos";
 import { TakePicturePage } from "../pages/take-picture/take-picture";
 import { SendPhotoPage } from "../pages/send-photo/send-photo";
+import { ProfilePage } from "../pages/profile/profile";
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { SendPhotoPage } from "../pages/send-photo/send-photo";
     SignupPage,
     PhotosPage,
     TakePicturePage,
-    SendPhotoPage
+    SendPhotoPage,
+    ProfilePage
   ],
   imports: [BrowserModule, IonicModule.forRoot(MyApp)],
   bootstrap: [IonicApp],
@@ -31,7 +33,7 @@ import { SendPhotoPage } from "../pages/send-photo/send-photo";
     SignupPage,
     PhotosPage,
     TakePicturePage,
-    SendPhotoPage
+    ProfilePage
   ],
   providers: [
     StatusBar,
