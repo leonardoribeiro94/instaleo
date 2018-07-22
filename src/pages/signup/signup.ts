@@ -43,7 +43,7 @@ export class SignupPage {
   }
 
   submit = () => {
-    let loader = this.loadingCtrl.create({ content: "Cadastrando..." });
+    const loader = this.loadingCtrl.create({ content: "Autenticando..." });
     loader.present();
 
     this.afAuth.auth
@@ -72,7 +72,7 @@ export class SignupPage {
       });
   };
 
-  goToogin = () => {
+  goToLogin = () => {
     this.navCtrl.setRoot(LoginPage);
   };
 }

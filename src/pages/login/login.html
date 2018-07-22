@@ -8,15 +8,17 @@
         <h1 text-center class="oleo-script logo-title">Instaleo</h1>
         <br>
         <br>
-        <ion-list no-lines>
-          <ion-item>
-            <ion-input type="email" placeholder="E-mail"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-input type="password" placeholder="Senha"></ion-input>
-          </ion-item>
-        </ion-list>
-        <button ion-button block large outline color="primary">Entrar</button>
+        <form [formGroup]="form">
+            <ion-list no-lines>
+              <ion-item>
+                <ion-input type="email" placeholder="E-mail" maxlength="140" formControlName="email"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-input type="password" placeholder="Senha" maxlength="20" formControlName="password"></ion-input>
+              </ion-item>
+            </ion-list>
+          </form>
+          <button ion-button block large outline [disabled]="!form.valid" (click)="submit()">Entrar</button>
       </ion-col>
     </ion-row>
   </ion-grid>
