@@ -53,6 +53,7 @@ export const environment = {
     SignupPage,
     PhotosPage,
     TakePicturePage,
+    SendPhotoPage,
     ProfilePage
   ],
   providers: [

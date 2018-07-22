@@ -24,10 +24,6 @@ export class TakePicturePage {
     }
   }
 
-  dismiss = () => {
-    this.viewCtrl.dismiss();
-  };
-
   takePicture = () => {
     var video = <any>document.getElementById("video");
     var canvas = <any>document.getElementById("canvas");
@@ -44,5 +40,9 @@ export class TakePicturePage {
 
       modal.present();
     }, 800);
+  };  
+
+  dismiss = () => {
+    this.viewCtrl.dismiss();
   };
 }
