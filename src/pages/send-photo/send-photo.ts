@@ -1,16 +1,58 @@
-import { Component } from "@angular/core";
-import { ViewController, AlertController } from "ionic-angular";
+import { Component, ViewChild } from "@angular/core";
+import {
+  Slides,
+  ViewController,
+  AlertController,
+  NavParams
+} from "ionic-angular";
 
 @Component({
   selector: "page-send-photo",
   templateUrl: "send-photo.html"
 })
 export class SendPhotoPage {
+  @ViewChild(Slides) slides: Slides;
+
   public location: string = "";
+  public photo: string = "";
+  public filter: string = "original";
+  public filters: string[] = [
+    "original",
+    "_1977",
+    "aden",
+    "brannan",
+    "brooklyn",
+    "clarendon",
+    "earlybird",
+    "gingham",
+    "hudson",
+    "inkwell",
+    "kelvin",
+    "lark",
+    "lofi",
+    "maven",
+    "mayfair",
+    "moon",
+    "nashville",
+    "perpetua",
+    "reyes",
+    "rise",
+    "slumber",
+    "stinson",
+    "toaster",
+    "valencia",
+    "walden",
+    "willow",
+    "willow"
+  ];
+
   constructor(
     private viewCtrl: ViewController,
-    private alertCtrl: AlertController
-  ) {}
+    private alertCtrl: AlertController,
+    private navParams: NavParams
+  ) {
+    this.photo = this.navParams.get("photo");
+  }
 
   getLocation = () => {
     if (navigator.geolocation) {
@@ -29,6 +71,11 @@ export class SendPhotoPage {
         }
       );
     }
+  };
+
+  changeFielter = () => {
+    let currentIndex = this.slides.getActiveIndex();
+    this.filter = this.filters[currentIndex];
   };
 
   dismiss = () => {

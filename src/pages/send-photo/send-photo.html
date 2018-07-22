@@ -11,20 +11,10 @@
 
 <ion-content class="auto-scroll">
   <ion-card>
-    <ion-slides>
-      <ion-slide text-center>
-        <img src="https://loremflickr.com/320/240" alt="image" alt="" class="inkwell" style="width: 100%">
-        <small>inkwell</small>
-      </ion-slide>
-
-      <ion-slide text-center>
-        <img src="https://loremflickr.com/320/240" alt="image" alt="" class="willow" style="width: 100%">
-        <small>willow</small>
-      </ion-slide>
-
-      <ion-slide text-center>
-        <img src="https://loremflickr.com/320/240" alt="image" alt="" class="nashville" style="width: 100%">
-        <small>nashville</small>
+    <ion-slides (ionSlideDidChanche)="changeFielter()">
+      <ion-slide text-center *ngFor="let filter of filters">
+        <img src="{{ photo }}" alt="image" alt="" class="{{ filter }}" style="width: 100%">
+        <small>{{ filter }}</small>
       </ion-slide>
     </ion-slides>
 
