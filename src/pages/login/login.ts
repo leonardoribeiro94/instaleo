@@ -41,6 +41,12 @@ export class LoginPage {
         ])
       ]
     });
+
+    afAuth.authState.subscribe(user => {
+      if (user) {
+        this.navCtrl.setRoot(HomePage);
+      }
+    });
   }
 
   submit = () => {
