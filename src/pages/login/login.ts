@@ -49,31 +49,31 @@ export class LoginPage {
     });
   }
 
-  submit = () => {
-    let loader = this.loadingCtrl.create({ content: "Cadastrando..." });
+  submit() {
+    let loader = this.loadingCtrl.create({ content: "Autenticando..." });
     loader.present();
 
     this.afAuth.auth
-    .signInWithEmailAndPassword(
-      this.form.controls["email"].value,
-      this.form.controls["password"].value
-    )
-    .then(() => {
-      loader.dismiss();
-      this.navCtrl.setRoot(HomePage);
-    })
-    .catch(() => {
-      loader.dismiss();
-      let alert = this.alertCtrl.create({
-        title: "Autenticação Inválida",
-        subTitle: "Usuário ou senha incorretos.",
-        buttons: ["OK"]
+      .signInWithEmailAndPassword(
+        this.form.controls["email"].value,
+        this.form.controls["password"].value
+      )
+      .then(() => {
+        loader.dismiss();
+        this.navCtrl.setRoot(HomePage);
+      })
+      .catch(() => {
+        loader.dismiss();
+        let alert = this.alertCtrl.create({
+          title: "Autenticação Inválida",
+          subTitle: "Usuário ou senha incorretos.",
+          buttons: ["OK"]
+        });
+        alert.present();
       });
-      alert.present();
-    });
-  };
+  }
 
-  goToSignup = () => {
+  goToSignup() {
     this.navCtrl.setRoot(SignupPage);
-  };
+  }
 }
