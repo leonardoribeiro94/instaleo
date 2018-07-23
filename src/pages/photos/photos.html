@@ -1,20 +1,28 @@
 <ion-content class="auto-scroll">
   <ion-grid fixed>
     <ion-row align-items-center justify-content-center>
-      <ion-col col-md-12 col-sm-12 col-md-4>
+      <ion-col col-md-12 col-sm-12 col-md-4 *ngFor="let photo of photos" class="animated zoomIn">
         <ion-card>
-          <img src="https://loremflickr.com/320/240" alt="image">
+          <img src="{{ photo.image }}" alt="{{ photo.title }}" class="{{ photo.filter }}" />
           <ion-card-content>
-            <ion-card-title>Titulo aqui</ion-card-title>
+            <ion-card-title>
+              {{ photo.title }}
+            </ion-card-title>
             <p>
-              <small>postado em 15/07/2018 por Leonardo Ribeiro</small>
+              {{ photo.message }}
+            </p>
+            <p>
+              <small>postado em {{ photo.date | date: 'dd/MM/yyyy HH:mm' }} por
+                <strong>{{ photo.user }}</strong>
+              </small>
             </p>
           </ion-card-content>
           <ion-row no-padding>
             <ion-col>
-              <button ion-button clear small color="danger" icon-start>
-                <ion-icon name="pin"></ion-icon>VER NO MAPA
-              </button>
+              <button ion-button clear small color="danger" icon-start *ngIf="photo.location != ''" (click)="showMap(photo.location)">
+                <ion-icon name='pin'></ion-icon> Ver no Mapa</button>
+              <button ion-button clear small color="danger" icon-start *ngIf="photo.location == ''">
+                <ion-icon name='pin'></ion-icon> Localização não Disponível</button>
             </ion-col>
           </ion-row>
         </ion-card>

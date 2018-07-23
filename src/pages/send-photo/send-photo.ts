@@ -7,7 +7,6 @@ import {
   AlertController,
   NavParams
 } from "ionic-angular";
-
 import { Validators, FormBuilder, FormGroup } from "@angular/forms";
 import { AngularFireDatabase, AngularFireList } from "angularfire2/database";
 import { AngularFireAuth } from "angularfire2/auth";

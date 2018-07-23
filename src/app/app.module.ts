@@ -15,6 +15,7 @@ import { PhotosPage } from "../pages/photos/photos";
 import { TakePicturePage } from "../pages/take-picture/take-picture";
 import { SendPhotoPage } from "../pages/send-photo/send-photo";
 import { ProfilePage } from "../pages/profile/profile";
+import { ShowMapPage } from "../pages/show-map/show-map";
 
 export const environment = {
   firebase: {
@@ -36,7 +37,8 @@ export const environment = {
     PhotosPage,
     TakePicturePage,
     SendPhotoPage,
-    ProfilePage
+    ProfilePage,
+    ShowMapPage
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,8 @@ export const environment = {
     PhotosPage,
     TakePicturePage,
     SendPhotoPage,
-    ProfilePage
+    ProfilePage,
+    ShowMapPage
   ],
   providers: [
     StatusBar,
