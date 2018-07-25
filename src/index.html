@@ -48,6 +48,26 @@
   <!-- The main bundle js is generated during the build process -->
   <script src="build/main.js"></script>
 
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      if (!Notification) {
+        alert("Este browser não suporta notificação");
+        return;
+      }
+
+      if (Notification.permission !== "granted") {
+        Notification.requestPermission();
+      }
+
+      let notification = new Notification("Bem vindo ao Instaleo", {
+        icon: "/assets/icon/icon-512x512.png",
+        body: "Seja bem vindo ao nosso instagram pirata!",
+        vibrate: [200, 100, 200, 100, 200, 100, 200]
+      });
+    });
+
+  </script>
+
 </body>
 
 </html>
