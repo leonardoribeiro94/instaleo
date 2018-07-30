@@ -1,6 +1,7 @@
 import { Component, ViewChild } from "@angular/core";
 import {
   Slides,
+  ToastController,
   LoadingController,
   NavController,
   ViewController,
@@ -63,7 +64,8 @@ export class SendPhotoPage {
     private viewCtrl: ViewController,
     private navParams: NavParams,
     private db: AngularFireDatabase,
-    private afAuth: AngularFireAuth
+    private afAuth: AngularFireAuth,
+    private toastCtrl: ToastController
   ) {
     this.photo = this.navParams.get("photo");
     this.photos = this.db.list("/photos");
@@ -123,6 +125,36 @@ export class SendPhotoPage {
 
   submit = () => {
     let loader = this.loadingCtrl.create({ content: "Carregando" });
+
+    if (!navigator.onLine) {
+      let data = JSON.parse(localStorage.getItem("photos"));
+      if (!data) {
+          data = []
+      }
+
+      data.push({
+        user: this.user,
+        image: this.photo,
+        filter: this.filter,
+        location: this.location,
+        title: this.form.controls["title"].value,
+        message: this.form.controls["message"].value,
+        date: firebase.database.ServerValue.TIMESTAMP
+      });
+
+      localStorage.setItem("photos", JSON.stringify(data));
+
+      loader.dismiss();
+      let toast = this.toastCtrl.create({
+        message: "Imagem salva para ser enviada depois",
+        duration: 1500
+      });
+
+      toast.present();
+      this.navCtrl.setRoot(HomePage);
+      return;
+    }
+
     this.photos
       .push({
         user: this.user,

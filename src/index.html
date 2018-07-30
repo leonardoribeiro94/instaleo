@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Ionic App</title>
+  <title>Instaleo</title>
   <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="format-detection" content="telephone=no">
   <meta name="msapplication-tap-highlight" content="no">
@@ -19,14 +19,27 @@
   <!-- cordova.js required for cordova apps (remove if not needed) -->
   <script src="cordova.js"></script>
 
-  <!-- un-comment this code to enable service worker
-  <script>
+  <!--un-comment this code to enable service worker -->
+  <!-- <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('service-worker.js')
         .then(() => console.log('service worker installed'))
         .catch(err => console.error('Error', err));
     }
-  </script>-->
+  </script> -->
+
+  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+  <script>
+    var OneSignal = window.OneSignal || [];
+    OneSignal.push(function () {
+      OneSignal.init({
+        appId: "a42dd7fc-adf7-48c3-9a59-9a685bdd7749",
+      });
+    });
+
+  </script>
+
+  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
 
   <link href="build/main.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
@@ -66,6 +79,31 @@
       });
     });
 
+    isOnline = () => {
+      if (navigator.onLine) {
+        var notification = new Notification("Voce está online!", {
+          icon: "/assets/icon/icon-512x512.png",
+          body: "Voce está navegando online, todo conteudo será enviado para o servidor",
+          vibrate: [200, 100, 200, 100, 200, 100, 200]
+        });
+
+        let photos = JSON.parse(localStorage.getItem("photos"));
+        photos.forEach(photo => {
+          console.log(photo.title);
+        });
+        
+      } else {
+        var notification = new Notification("Voce está offline!", {
+          icon: "/assets/icon/icon-512x512.png",
+          body: "Voce está navegando offline!, todo conteudo será enviado armazenado localmente",
+          vibrate: [200, 100, 200, 100, 200, 100, 200]
+        })
+      }
+    }
+    
+    isOnline();
+    window.addEventListener("online", isOnline);
+    window.addEventListener("offline", isOnline)
   </script>
 
 </body>
